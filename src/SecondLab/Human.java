@@ -9,18 +9,18 @@ public class Human {
 
     private double age;
 
-    private int id;
+    private int mode;
 
     private boolean isMan;
 
     double[] list = {1.2, 1.38, 1.46, 1.55, 1.64, 1.73, 1.9};
 
-    public Human(String name, double height, double weight, double age, int id, boolean isMan) {
+    public Human(String name, double height, double weight, double age, int mode, boolean isMan) {
         this.name = name;
         this.height = height;
         this.weight = weight;
         this.age = age;
-        this.id = id;
+        this.mode = mode;
         this.isMan = isMan;
     }
 
@@ -49,32 +49,26 @@ public class Human {
         this.weight = weight;
     }
 
-    public int getId() {
-        return id;
+    public int getMode() {
+        return mode;
     }
 
-    public void setId(int id) {
-        if (id >= 0 && id <= 6)
-            this.id = id;
+    public void setMode(int mode) {
+        if (mode >= 0 && mode <= 6)
+            this.mode = mode;
+    }
 
-        switch (id) {
-            case 0:
-
-                break;
-            case 1:
-                break;
-            case 2:
-                break;
-            case 3:
-                break;
-            case 4:
-                break;
-            case 5:
-                break;
-            case 6:
-                break;
-
-        }
+    double setIdValue (int id) {
+        return switch (id) {
+            case 0 -> list[0];
+            case 1 -> list[1];
+            case 2 -> list[2];
+            case 3 -> list[3];
+            case 4 -> list[4];
+            case 5 -> list[5];
+            case 6 -> list[6];
+            default -> 0;
+        };
     }
 
     public boolean isMan() {
@@ -85,12 +79,29 @@ public class Human {
         isMan = man;
     }
 
-    void countDCI(double proteins, double carbs, double fats, Human human) {
+    public void countDCI(Meal[] meals, Human human, int mode) {
         double dci;
+        double mealsCals = 0;
         if (human.isMan())
-            dci = (human.getWeight() * 10 + human.getHeight() * 6.25 - human.getWeight() * 5 - 161);
+            dci = (human.getWeight() * 10 + human.getHeight() * 6.25 - human.getAge() * 5 - 161) * setIdValue(mode);
         else
-            dci = (human.getWeight() * 10 + human.getHeight() * 6.25 - human.getWeight() * 5 + 5);
+            dci = (human.getWeight() * 10 + human.getHeight() * 6.25 - human.getAge() * 5 + 5) * setIdValue(mode);
+
+        System.out.println("Ваш дневная норма: " + dci + " cal");
+
+        for (Meal meal : meals) {
+            mealsCals += meal.countCalories(meal.getProteins(), meal.getCarbs(), meal.getFats());
+        }
+
+        System.out.println("Сколько калорий вы съели: " + mealsCals + " cal");
+
+        if(mealsCals > dci) {
+            System.out.println("Вы съели очень много сегодня");
+        } else if (mealsCals < dci) {
+            System.out.println("Вы недоели сегодня");
+        } else {
+            System.out.println("Идеально");
+        }
 
     }
 
