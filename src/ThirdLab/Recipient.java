@@ -3,13 +3,32 @@ package ThirdLab;
 import java.util.Map;
 
 public class Recipient extends Resident {
-    @Override
-    public double getEnergyPerDay(Map<Integer, Double> energyPerDay, Integer months, Integer forAll) {
-        return super.getEnergyPerDay(energyPerDay, months, forAll);
+    public Recipient(String name, Map<Integer, Map<Integer, Double>> energyPerMonth) {
+        super(name, energyPerMonth);
     }
 
-    public double getAmountOfSalary(Map<Integer, Double> energyPerDay, Integer months, Integer forAll) {
-        double recipientCoefficient = 0.25;
-        return getEnergyPerDay(energyPerDay, months, forAll) * 2.5;
+    @Override
+    public double getEnergy(Map<Integer, Map<Integer, Double>> energyPerDay, Integer month, Boolean forAll) {
+        return super.getEnergy(energyPerDay, month, forAll);
+    }
+
+    @Override
+    public double getAmountOfMoney(Map<Integer, Map<Integer, Double>> energyPerDay, Integer months, Boolean forAll) {
+        return super.getAmountOfMoney(energyPerDay, months, forAll);
+    }
+
+    @Override
+    public int getMonthMinMax(Map<Integer, Map<Integer, Double>> energyPerDay, boolean isMax) {
+        return super.getMonthMinMax(energyPerDay, isMax);
+    }
+
+    @Override
+    public int getDayMinMax(Map<Integer, Map<Integer, Double>> energyPerDay, boolean isMax) {
+        return super.getDayMinMax(energyPerDay, isMax);
+    }
+
+    @Override
+    public double getAverageEnergy(Map<Integer, Map<Integer, Double>> energyPerDay, int month) {
+        return super.getAverageEnergy(energyPerDay, month);
     }
 }
