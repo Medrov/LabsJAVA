@@ -31,4 +31,18 @@ public class Recipient extends Resident {
     public double getAverageEnergy(Map<Integer, Map<Integer, Double>> energyPerDay, int month) {
         return super.getAverageEnergy(energyPerDay, month);
     }
+
+    @Override
+    public double getDayMinMaxValue(Map<Integer, Map<Integer, Double>> energyPerDay, boolean isMax) {
+        return super.getDayMinMaxValue(energyPerDay, isMax);
+    }
+
+    public String getNameDayMinMax(Resident[] residents, boolean isMax) {
+        return super.getNameDayMinMax(residents, isMax);
+    }
+
+    @Override
+    public String getNameMonthMinMax(Resident[] residents, boolean isMax) {
+        return super.getNameMonthMinMax(residents, isMax);
+    }
 }
