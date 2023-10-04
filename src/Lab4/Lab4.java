@@ -1,4 +1,4 @@
-package ThirdLab;
+package Lab4;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -7,7 +7,7 @@ import java.util.Locale;
 import java.util.Map;
 import java.util.Random;
 
-public class ThirdLab {
+public class Lab4 {
     public static void main(String[] args) {
         Random random = new Random();
         DecimalFormat df = new DecimalFormat("#.##");
@@ -57,16 +57,14 @@ public class ThirdLab {
                 }
                 System.out.println();
             }
-//            System.out.println("Energy: " + resident.getEnergy(resident.energyPerMonth, 3, false));
-//            System.out.println("Money's energy: " + resident.getAmountOfMoney(resident.energyPerMonth, 3, false));
 
-            System.out.println("Min: " + resident.getMonthMinMax(resident.energyPerDay, true));
-            System.out.println("Min: " + resident.getNameMonthMinMax(residents, false));
 
-            System.out.println();
+            System.out.println(resident.getNameMonthMinMax(residents, false));
+
+            System.out.println(resident.getNameDayMinMax(residents, false));
         }
 
 
-
     }
+
 }

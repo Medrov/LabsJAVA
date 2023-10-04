@@ -1,6 +1,6 @@
-package SecondLab;
+package Lab3;
 
-public class SecondLab {
+public class Lab3 {
     public static void main(String[] args) {
         //Lunch
         Meal olivie = new Meal("Olivie", 5.4, 7, 16.7);

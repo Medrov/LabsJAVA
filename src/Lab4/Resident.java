@@ -1,4 +1,4 @@
-package ThirdLab;
+package Lab4;
 
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
@@ -67,6 +67,22 @@ public class Resident {
         return list.indexOf(result) + 1;
     }
 
+    public double getDayMinMaxValue(Map<Integer, Map<Integer, Double>> energyPerDay, boolean isMax) {
+        Double result;
+        List<Double> list = new ArrayList<>();
+        for (int i = 1; i <= energyPerDay.size(); i++) {
+            for (int j = 1; j <= energyPerDay.get(i).size(); j++) {
+                list.add(energyPerDay.get(i).get(j));
+            }
+        }
+        if (isMax) {
+            result = Collections.max(list);
+        } else {
+            result = Collections.min(list);
+        }
+        return result;
+    }
+
     public double getAverageEnergy(Map<Integer, Map<Integer, Double>> energyPerDay, int month) {
         double result = 0;
         for (int j = 1; j <= energyPerDay.get(month).size(); j++) {
@@ -76,8 +92,8 @@ public class Resident {
         return result;
     }
 
-    public int getNameMonthMinMax(Resident[] residents, boolean isMax) {
-        int result;
+    public String getNameMonthMinMax(Resident[] residents, boolean isMax) {
+        String result;
         DecimalFormat df = new DecimalFormat("#.##");
         df.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH));
 
@@ -91,12 +107,8 @@ public class Resident {
             for (int i = 0; i < residents.length; i++) {
                 finalList.add(getEnergy(residents[i].energyPerDay, list.get(i), false));
             }
-
-            System.out.println(list);
-            System.out.println(finalList);
-
-            System.out.println(residents[finalList.indexOf(Collections.max(finalList))].name+": " + df.format(Collections.max(finalList)));
-
+            System.out.println("Max month: ");
+            result = residents[finalList.indexOf(Collections.max(finalList))].name+": " + df.format(Collections.max(finalList));
         } else {
             for (Resident resident : residents) {
                 list.add(getMonthMinMax(resident.energyPerDay, false));
@@ -105,33 +117,44 @@ public class Resident {
             for (int i = 0; i < residents.length; i++) {
                 finalList.add(getEnergy(residents[i].energyPerDay, list.get(i), false));
             }
-
-            System.out.println(list);
-            System.out.println(finalList);
-
-            System.out.println(residents[finalList.indexOf(Collections.min(finalList))].name+": " + df.format(Collections.min(finalList)));
+            System.out.println("Min month: ");
+            result = residents[finalList.indexOf(Collections.min(finalList))].name+": " + df.format(Collections.min(finalList));
 
         }
 
-        return 0;
+        return result;
     }
 
-    public int getNameDayMinMax(Map<Integer, Map<Integer, Double>> energyPerDay, boolean isMax) {
-        Double result;
-        List<Double> list = new ArrayList<>();
-        for (int i = 1; i <= energyPerDay.size(); i++) {
-            for (int j = 1; j <= energyPerDay.get(i).size(); j++) {
-                list.add(energyPerDay.get(i).get(j));
-            }
-        }
+    public String getNameDayMinMax(Resident[] residents, boolean isMax) {
+        String result;
+        DecimalFormat df = new DecimalFormat("#.##");
+        df.setDecimalFormatSymbols(DecimalFormatSymbols.getInstance(Locale.ENGLISH));
+
+        List<Integer> list = new ArrayList<>();
+        List<Double> finalList = new ArrayList<>();
         if (isMax) {
-            result = Collections.max(list);
+            for (Resident resident : residents) {
+                list.add(getDayMinMax(resident.energyPerDay, true));
+            }
+
+            for (Resident resident : residents) {
+                finalList.add(getDayMinMaxValue(resident.energyPerDay, true));
+            }
+            System.out.println("Max Day: ");
+            result = residents[finalList.indexOf(Collections.max(finalList))].name+": " + df.format(Collections.max(finalList));
         } else {
-            result = Collections.min(list);
+            for (Resident resident : residents) {
+                list.add(getDayMinMax(resident.energyPerDay, false));
+            }
+
+            for (Resident resident : residents) {
+                finalList.add(getDayMinMaxValue(resident.energyPerDay, false));
+            }
+            System.out.println("Min Day: ");
+            result = residents[finalList.indexOf(Collections.min(finalList))].name+": " + df.format(Collections.min(finalList));
         }
-        return list.indexOf(result) + 1;
+
+        return result;
     }
-
-
 
 }

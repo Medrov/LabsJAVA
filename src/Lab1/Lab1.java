@@ -1,8 +1,8 @@
-package FirstLab;
+package Lab1;
 
 import java.util.Random;
 
-public class FirstLab {
+public class Lab1 {
     public static void main(String[] args) {
         //firstTask();
         //secondTask();

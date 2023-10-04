@@ -1,7 +1,4 @@
-package SecondLab;
-
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+package Lab3;
 
 public class Meal {
     private final String name;

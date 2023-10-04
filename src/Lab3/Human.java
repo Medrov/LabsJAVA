@@ -1,4 +1,4 @@
-package SecondLab;
+package Lab3;
 
 public class Human {
     private String name;
