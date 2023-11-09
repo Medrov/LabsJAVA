@@ -42,8 +42,8 @@ public class Meal {
         StringBuilder result = new StringBuilder();
         String newLine = System.getProperty("line.separator");
 
-        result.append( this.getClass().getName() );
-        result.append( " Object {" );
+        result.append(this.getClass().getName());
+        result.append( " {" );
         result.append(newLine);
 
         //determine fields declared in this class only (no fields of superclass)

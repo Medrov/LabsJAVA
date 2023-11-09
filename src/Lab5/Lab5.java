@@ -3,11 +3,11 @@ package Lab5;
 import Lab3.Human;
 import Lab3.Meal;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.InputMismatchException;
-import java.util.List;
-import java.util.Scanner;
+import java.nio.charset.Charset;
+import java.util.*;
 
 public class Lab5 {
     static Scanner scan = new Scanner(System.in);
@@ -30,15 +30,18 @@ public class Lab5 {
     };
     static List<Meal> meals = new ArrayList<>();
 
+    static List<List<String>> records = new ArrayList<>();
+
     public static void main(String[] args) throws IOException {
         menu();
+        printLogo();
     }
     static void menu(){
-        //printLogo();
         System.out.println("1. Выбор пользователя");
         System.out.println("2. Расписать еду");
         System.out.println("3. Убрать индекс");
         System.out.println("4. Запись пользователей");
+        System.out.println("5. Запись c файла");
         System.out.print("Ващ выбор: ");
         int choice = 0;
         try {
@@ -63,6 +66,11 @@ public class Lab5 {
                 break;
             case 4:
                 finalCount();
+                menu();
+                break;
+            case 5:
+                readCSV();
+                //printLogo();
                 menu();
                 break;
             default:
@@ -134,6 +142,30 @@ public class Lab5 {
             System.out.println("Ошибка нулевого элемента");
         }
 
+    }
+
+    static void readCSV () {
+        try (BufferedReader buffer = new BufferedReader(new FileReader("/home/mob/Documents/GitHub/LabsJAVA/src/Lab5/food.csv", Charset.forName("windows-1251")))) {
+            String line;
+            while ((line = buffer.readLine()) != null) {
+                String[] values = line.split(",");
+                records.add(Arrays.asList(values));
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        for (int i = 0; i < records.size(); i++) {
+            for (int j = 0; j < records.get(i).size(); j++) {
+                meals.add(
+                        new Meal(records.get(i).get(0).split(";")[0],
+                                Double.parseDouble(records.get(i).get(0).split(";")[1]),
+                                Double.parseDouble(records.get(i).get(0).split(";")[2]),
+                                Double.parseDouble(records.get(i).get(0).split(";")[3])
+                        )
+                );
+            }
+        }
+        System.out.println(meals);
     }
 
 
