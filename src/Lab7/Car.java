@@ -4,4 +4,5 @@ public class Car extends Transport {
     public Car(String brand) {
         super(brand);
     }
+
 }

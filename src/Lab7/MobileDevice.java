@@ -1,12 +1,17 @@
 package Lab7;
 
 public class MobileDevice implements Repairable {
-    private String brand;
-    private boolean isFunctional;
+    public static String brand;
+    private static boolean isFunctional;
+
+    {
+        brand = "SOYO";
+        isFunctional = false;
+    }
 
     public MobileDevice(String brand) {
-        this.brand = brand;
-        this.isFunctional = true;
+        MobileDevice.brand = brand;
+        isFunctional = true;
     }
 
     @Override

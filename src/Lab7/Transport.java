@@ -1,7 +1,7 @@
 package Lab7;
 
 abstract class Transport implements Repairable{
-    private String brand;
+    public final String brand;
     private boolean isFunctional;
 
     public Transport(String brand) {
@@ -11,15 +11,15 @@ abstract class Transport implements Repairable{
 
     @Override
     public void breakDown() {
-        System.out.println("Техника " + brand + " сломана.");
+        System.out.println("Транспорт " + brand + " сломан.");
         isFunctional = false;
     }
 
     @Override
     public String repair() {
-        System.out.println("Техника " + brand + " починена.");
+        System.out.println("Транспорт " + brand + " починен.");
         isFunctional = true;
-        return "Техника починена.";
+        return "Транспорт починен.";
     }
 
     @Override

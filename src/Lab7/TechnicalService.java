@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TechnicalService<T extends Repairable> {
-    private List<T> servicedDevices;
+    private final List<T> servicedDevices;
 
     public TechnicalService() {
         this.servicedDevices = new ArrayList<>();
@@ -22,6 +22,11 @@ public class TechnicalService<T extends Repairable> {
             System.out.println(device.getClass().getSimpleName() + ": " + (device.isFunctional() ? "Исправно" : "Неисправно"));
         }
         System.out.println();
+    }
+
+
+    public static <Z extends Repairable> TechnicalService<Z> createTechnicalService() {
+        return new TechnicalService<Z>();
     }
 }
 

@@ -10,16 +10,18 @@ public class Lab7 {
 
         TechnicalService<Car> carService = new TechnicalService<Car>();
         TechnicalService<Truck> truckService = new TechnicalService<Truck>();
-        TechnicalService<Computer> computerService = new TechnicalService<Computer>();
-        TechnicalService<MobileDevice> mobileDeviceService = new TechnicalService<MobileDevice>();
+//        TechnicalService<Computer> computerService = new TechnicalService<Computer>();
+//        TechnicalService<MobileDevice> mobileDeviceService = new TechnicalService<MobileDevice>();
+        TechnicalService<Computer> computerService = TechnicalService.createTechnicalService();
+        TechnicalService<MobileDevice> mobileDeviceService = TechnicalService.createTechnicalService();
 
+        System.out.println(computer.brand);
         carService.repairDevice(car);
         //car.breakDown();
         truckService.repairDevice(truck);
         computerService.repairDevice(computer);
         //computer.breakDown();
         mobileDeviceService.repairDevice(mobileDevice);
-
         carService.showServicedDevices();
         truckService.showServicedDevices();
         computerService.showServicedDevices();

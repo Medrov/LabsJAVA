@@ -1,8 +1,12 @@
 package Lab7;
 
 public class Computer implements Repairable {
-    private String brand;
+    public final String brand;
     private boolean isFunctional;
+
+    static {
+        System.out.println("Чисто актив закинуть");
+    }
 
     public Computer(String brand) {
         this.brand = brand;
