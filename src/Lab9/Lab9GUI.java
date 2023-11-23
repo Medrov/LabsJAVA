@@ -17,7 +17,7 @@ public class Lab9GUI {
             e.printStackTrace();
         }
 
-        JFrame frame = new JFrame("Technical Service");
+        JFrame frame = new JFrame("Техническое обслуживание");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400, 300);
 
@@ -25,18 +25,18 @@ public class Lab9GUI {
         inputPanel.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
         inputPanel.setFont(inputPanel.getFont().deriveFont(16f)); // Установка размера шрифта для панели
 
-        JLabel nameLabel = new JLabel("Client Name:");
+        JLabel nameLabel = new JLabel("Имя клиента:");
         nameLabel.setFont(nameLabel.getFont().deriveFont(16f)); // Установка размера шрифта для метки
         JTextField nameField = new JTextField();
         nameField.setFont(nameField.getFont().deriveFont(16f)); // Установка размера шрифта для поля ввода
 
-        JLabel typeLabel = new JLabel("Equipment Type:");
+        JLabel typeLabel = new JLabel("Тип оборудования:");
         typeLabel.setFont(typeLabel.getFont().deriveFont(16f)); // Установка размера шрифта для метки
-        String[] types = {"Car", "Truck", "Computer", "Mobile Device"};
+        String[] types = {"Автомобиль", "Грузовик", "Компьютер", "Мобильное устройство"};
         JComboBox<String> typeComboBox = new JComboBox<>(types);
         typeComboBox.setFont(typeComboBox.getFont().deriveFont(16f)); // Установка размера шрифта для выпадающего списка
 
-        JButton createButton = new JButton("Create");
+        JButton createButton = new JButton("Создать");
         createButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -47,8 +47,8 @@ public class Lab9GUI {
                     String result = serve(clientName, selectedType);
                     outputTextArea.append(result + "\n");
                 } else {
-                    JOptionPane.showMessageDialog(frame, "Please enter the client name and select the equipment type.",
-                            "Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(frame, "Пожалуйста, введите имя клиента и выберите тип оборудования.",
+                            "Ошибка", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -73,7 +73,7 @@ public class Lab9GUI {
     }
 
     public static String serve(String clientName, String selectedType) {
-        String result = clientName + " is servicing " + selectedType;
+        String result = clientName + " обслуживает " + selectedType;
         return result;
     }
 }
