@@ -26,5 +26,7 @@ public class Lab7 {
         truckService.showServicedDevices();
         computerService.showServicedDevices();
         mobileDeviceService.showServicedDevices();
+
+
     }
 }
