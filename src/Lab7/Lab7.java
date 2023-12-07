@@ -10,8 +10,6 @@ public class Lab7 {
 
         TechnicalService<Car> carService = new TechnicalService<Car>();
         TechnicalService<Truck> truckService = new TechnicalService<Truck>();
-//        TechnicalService<Computer> computerService = new TechnicalService<Computer>();
-//        TechnicalService<MobileDevice> mobileDeviceService = new TechnicalService<MobileDevice>();
         TechnicalService<Computer> computerService = TechnicalService.createTechnicalService();
         TechnicalService<MobileDevice> mobileDeviceService = TechnicalService.createTechnicalService();
 
