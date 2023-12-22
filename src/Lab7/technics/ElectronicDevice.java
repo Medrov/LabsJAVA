@@ -1,17 +1,14 @@
-package Lab7;
+package Lab7.technics;
 
-public class MobileDevice implements Repairable {
-    public static String brand;
-    private static boolean isFunctional;
+import Lab7.Repairable;
 
-    {
-        brand = "SOYO";
-        isFunctional = false;
-    }
+public class ElectronicDevice implements Repairable {
+    protected String brand;
+    protected boolean isFunctional;
 
-    public MobileDevice(String brand) {
-        MobileDevice.brand = brand;
-        isFunctional = true;
+    public ElectronicDevice(String brand) {
+        this.brand = brand;
+        this.isFunctional = true;
     }
 
     @Override

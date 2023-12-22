@@ -1,6 +1,11 @@
 package Lab9;
 
 import Lab7.*;
+import Lab7.services.TechnicalService;
+import Lab7.technics.bunch.Car;
+import Lab7.technics.bunch.Computer;
+import Lab7.technics.bunch.MobileDevice;
+import Lab7.technics.bunch.Truck;
 import com.formdev.flatlaf.FlatDarkLaf;
 
 import javax.swing.*;
