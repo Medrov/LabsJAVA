@@ -2,7 +2,7 @@ package Lab7.technics;
 
 import Lab7.Repairable;
 
-public abstract class Transport implements Repairable {
+public class Transport implements Repairable {
     public final String brand;
     private boolean isFunctional;
 

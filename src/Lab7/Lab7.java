@@ -18,9 +18,10 @@ public class Lab7 {
 
         VehicleService<Car> carService = new VehicleService<Car>();
         VehicleService<Truck> truckService = new VehicleService<Truck>();
-        ComputerService<Computer> computerService = new ComputerService<Computer>();
-        ComputerService<MobileDevice> mobileDeviceService = new ComputerService<MobileDevice>();
-
+        ComputerService<Computer> computerService = new ComputerService<Computer>(repairSpots, repairThreadPool);
+        ComputerService<MobileDevice> mobileDeviceService = new ComputerService<MobileDevice>(repairSpots, repairThreadPool);
+        // Подождем некоторое время, чтобы увидеть случайные ломки
+//1
         System.out.println(computer);
         carService.repairDevice(car);
         truckService.repairDevice(truck);

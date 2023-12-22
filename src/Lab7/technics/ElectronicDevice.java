@@ -3,7 +3,7 @@ package Lab7.technics;
 import Lab7.Repairable;
 
 public class ElectronicDevice implements Repairable {
-    protected String brand;
+    public final String brand;
     protected boolean isFunctional;
 
     public ElectronicDevice(String brand) {
