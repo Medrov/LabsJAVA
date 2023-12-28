@@ -186,7 +186,7 @@ public class Lab9GUI {
     public static <T extends Repairable> String repair(String clientName, T selectedType) {
         String result = clientName + " починен и является классом типа" + selectedType;
         TechnicalService<T> techService = create(clientName, selectedType);
-        techService.repairDevice(selectedType);
+        //techService.repairDevice(selectedType);
         techService.showServicedDevices();
         System.out.println(result);
         System.out.println();

@@ -16,15 +16,17 @@ public class ComputerService<T extends Repairable> extends TechnicalService<T> {
     private final List<ElectronicDevice> electronicDevices;
     private final int repairSpots;
     private final ExecutorService repairThreadPool;
+    private int repairedCount;
     private Random random;
 
     public ComputerService(int repairSpots) {
         this.electronicDevices = new ArrayList<>();
         this.repairSpots = repairSpots;
         this.repairThreadPool =  Executors.newFixedThreadPool(repairSpots);
+        this.repairedCount = 0;
         this.random = new Random();
         createElectronicDevices();
-        startBreaking();
+        startRepair();
     }
 
     private void createElectronicDevices() {
@@ -53,6 +55,7 @@ public class ComputerService<T extends Repairable> extends TechnicalService<T> {
                 TimeUnit.SECONDS.sleep(2); // ремонт в течение 2 секунд
                 device.repair();
                 System.out.println("Устройство " + device.brand + " отремонтировано.");
+                repairedCount++;
             }
         }
     }
@@ -67,6 +70,9 @@ public class ComputerService<T extends Repairable> extends TechnicalService<T> {
             repairThreadPool.shutdownNow();
             Thread.currentThread().interrupt();
         }
+    }
+    public int getRepairedCount() {
+        return repairedCount;
     }
 
     private void startBreaking() {

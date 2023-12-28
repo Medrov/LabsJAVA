@@ -9,20 +9,18 @@ import Lab7.technics.bunch.MobileDevice;
 import Lab7.technics.bunch.Truck;
 
 public class Lab7 {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws InterruptedException {
 
         Car car = new Car("Toyota");
         Truck truck = new Truck("Volvo");
         Computer computer = new Computer("HP");
         MobileDevice mobileDevice = new MobileDevice("Samsung");
 
-        VehicleService<Car> carService = new VehicleService<Car>();
-        VehicleService<Truck> truckService = new VehicleService<Truck>();
-        ComputerService<Computer> computerService = new ComputerService<Computer>(repairSpots, repairThreadPool);
-        ComputerService<MobileDevice> mobileDeviceService = new ComputerService<MobileDevice>(repairSpots, repairThreadPool);
-        // Подождем некоторое время, чтобы увидеть случайные ломки
-//1
-        System.out.println(computer);
+        VehicleService<Car> carService = new VehicleService<Car>(1);
+        VehicleService<Truck> truckService = new VehicleService<Truck>(1);
+        ComputerService<Computer> computerService = new ComputerService<Computer>(1);
+        ComputerService<MobileDevice> mobileDeviceService = new ComputerService<MobileDevice>(1);
+
         carService.repairDevice(car);
         truckService.repairDevice(truck);
         computerService.repairDevice(computer);

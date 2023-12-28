@@ -12,7 +12,7 @@ public class TechnicalService<T extends Repairable> {
         this.servicedDevices = new ArrayList<>();
     }
 
-    public void repairDevice(T device) {
+    public void repairDevice(T device) throws InterruptedException {
         System.out.println("Ремонт " + device.getClass().getSimpleName() + ": " + device.repair());
         servicedDevices.add(device);
         System.out.println();
@@ -25,7 +25,6 @@ public class TechnicalService<T extends Repairable> {
         }
         System.out.println();
     }
-
 
     public static <Z extends Repairable> TechnicalService<Z> createTechnicalService() {
         return new TechnicalService<Z>();
