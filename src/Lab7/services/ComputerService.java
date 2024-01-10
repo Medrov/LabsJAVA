@@ -12,8 +12,9 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+
 public class ComputerService<T extends Repairable> extends TechnicalService<T> {
-    private final List<ElectronicDevice> electronicDevices;
+    private static List<ElectronicDevice> electronicDevices;
     private final int repairSpots;
     private final ExecutorService repairThreadPool;
     private int repairedCount;
@@ -29,7 +30,7 @@ public class ComputerService<T extends Repairable> extends TechnicalService<T> {
         startRepair();
     }
 
-    private void createElectronicDevices() {
+    public static void createElectronicDevices() {
         for (int i = 0; i < 5; i++) {
             electronicDevices.add(new Computer("Computer" + (i + 1)));
             electronicDevices.add(new MobileDevice("MobileDevice" + (i + 1)));

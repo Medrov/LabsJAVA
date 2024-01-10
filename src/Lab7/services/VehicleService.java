@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
 public class VehicleService<T extends Repairable> extends TechnicalService<T> {
-    private final List<Transport> transports;
+    private static List<Transport> transports;
 
     private final int repairSpots;
     private final ExecutorService repairThreadPool;
@@ -30,11 +30,12 @@ public class VehicleService<T extends Repairable> extends TechnicalService<T> {
         startRepair();
     }
 
-    private void createTransports() {
+    public static void createTransports() {
         for (int i = 0; i < 5; i++) {
             transports.add(new Car("Car" + (i + 1)));
             transports.add(new Truck("Truck" + (i + 1)));
         }
+        System.out.println(transports);
     }
 
     private void startBreaking() {
